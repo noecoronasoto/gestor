@@ -1,0 +1,27 @@
+/* Fuentes */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+body.alternate {
+    font-family: Arial, sans-serif;
+}
+
+/* Colorimetría */
+.color-sample {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.color-1 { background-color:#043261; }
+.color-2 { background-color:  #ffffff; }
+.color-3 { background-color:#f0f0f0; }
+.color-4 { background-color:  #285683; }
+.color-5 { background-color: #46A2FD; }
+
+/* Ejemplo de iconos */
+.icon {
+    font-size: 24px;
+    margin: 10px;
+}

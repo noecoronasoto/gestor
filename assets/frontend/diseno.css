@@ -1,0 +1,320 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color:#043261;
+    padding: 10px;
+    text-align: center;
+}
+
+.horizontal-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.horizontal-menu li {
+    margin: 0;
+}
+
+.horizontal-menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px; /* Ajustado para mejor espacio */
+    display: block;
+}
+
+.contiene {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: 200px;
+    background-color:#043261;
+    padding-top: 20px;
+}
+
+.izq-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.izq-menu li {
+    margin: 0;
+}
+
+.izq-menu a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 10px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+main {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #f0f0f0;
+    border: 5px solid #080808;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease; /* Suave animación al hover */
+    
+}
+
+.card:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+    transform: scale(1.05); /* Aumentar ligeramente al pasar el mouse */
+}
+
+.card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    background-color:#f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.card .icon {
+    font-size: 50px; /* Tamaño del icono */
+    margin-bottom: 15       px; /* Espacio entre el icono y el texto */
+}
+.botoni {
+    background-color: #c5c5c9;
+    width: 45px;
+    font-size: 30px; 
+    border: none;
+    position: relative; /* Asegúrate de que el botón esté en su posición */
+    z-index: 1; /* Para que el botón esté encima de la barra lateral */
+}
+.botonii {
+    background-color: #c5c5c9;
+    width: 45px;
+    font-size: 30px; 
+    border: none;
+    position: relative; /* Asegúrate de que el botón esté en su posición */
+    z-index: 1; /* Para que el botón esté encima de la barra lateral */
+}
+body{
+    background-image: url(../images/fondoLogin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.opcion {
+    border: none;
+    background-color: rgb(250, 250, 251);
+    width: 100%; /* Opción ocupa todo el ancho */
+    color: white; /* Color del texto */
+}
+
+/* Estilos para la barra lateral */
+.barra-lateral {
+    position: fixed; /* Fija la barra lateral */
+    top: 0;
+    left: -200px; /* Fuera de la vista inicial */
+    width: 200px; /* Ancho de la barra lateral */
+    height: 100%; /* Altura completa */
+    background-color: #b8bcc0; /* Color de fondo */
+    transition: left 0.3s ease; /* Transición suave */
+    box-shadow: 2px 0 5px rgba(245, 231, 231, 0.95); /* Sombra a la derecha */
+}
+
+.barra-lateral.mostrar {
+    background-color: #f3f5f6;
+    left: 0; /* Mueve la barra lateral a la vista */
+}
+
+.text {
+    color: black;
+    text-align: center;
+}
+.botonesPan {
+    position: absolute;
+    top: 80%; /* Coloca los botones al 60% desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; /* Espacio entre los botones */
+}
+
+.BtnEliminarU,
+.BtnAgregarU {
+    width: 150px;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.BtnEliminarP,
+.BtnAgregarP,
+.BtnModificarP {
+    width: 170px;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#tablaUsua {
+    margin: 20px auto;
+    width: 80%; }
+
+/* Estilo general de la tabla */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Estilo para las cabeceras de la tabla */
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Estilo para las celdas */
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+/* Estilo para las filas */
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Estilo para las filas alternas */
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* Estilo para la fila al pasar el ratón */
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para la última fila */
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .tabla-productos {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.tabla-productos table {
+    width: 100%;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.tabla-productos th, .tabla-productos td {
+    text-align: left;
+    padding: 12px;
+}
+
+.tabla-productos th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.tabla-productos tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla-productos tr:hover {
+    background-color: #f1f1f1;
+}
+
+.tabla-productos input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.BtnBorrar {
+    background-color: red; /* Color de fondo del botón de borrar */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.BtnBorrar:hover {
+    background-color: darkred; /* Color de fondo al pasar el mouse */
+}
