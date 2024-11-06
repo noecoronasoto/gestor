@@ -1,15 +1,15 @@
 <?php 
-
+    
     session_start();
 
     include 'conexion_be.php';
 
-    $corr = $_POST['corre'];
-    $contrass = $_POST['contrasen'];
+    $corr = $_POST['nombre'];
+    $contrass = $_POST['password'];
     $contras = hash('sha512', $contrass);
 
-    $validarLogin = mysqli_query($conn, "SELECT * FROM LGNTBL where 
-    correo = '$corr' and psswd = '$contras'");
+    $validarLogin = mysqli_query($conn, "SELECT * FROM usuarios where 
+    nombre = '$corr' and password = '$contras'");
 
     if(mysqli_num_rows($validarLogin) > 0){
         $_SESSION['usuario'] = $corr;

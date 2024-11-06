@@ -2,22 +2,21 @@
 
     include 'conexion_be.php';
 
-    $correoNuev = $_POST['correoNuevo'];
+    $correoNuev = $_POST['password'];
     $contrasenaNuev = $_POST['contrasenaNueva'];
     $contra_encrip = hash('sha512', $contrasenaNuev);
 
-    $query = "INSERT INTO LGNTBL(correo, psswd) VALUES('$correoNuev', 
+    $query = "INSERT INTO usuarios(nombre, pssswd) VALUES('$correoNuev', 
     '$contra_encrip')"; 
 
 
     //validar repeticiones bd
-    $verificarCorreo = mysqli_query($conn, "SELECT * FROM LGNTBL WHERE 
-    correo = '$correoNuev'");
+    $verificarCorreo = mysqli_query($conn, "SELECT * FROM usuarios WHERE nombre");
 
     if(mysqli_num_rows($verificarCorreo) > 0){
         echo '
-        <script>
-            alert("Correo ya registrado");
+        <script >
+            alert("usuario ya registrado");
             window.location = "../index.php";
         </script>
         ';
