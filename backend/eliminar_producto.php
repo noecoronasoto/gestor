@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $conn->query($query); // Ejecutar la consulta
 
     // Redirigir de vuelta a la pantalla de productos
-    header("Location: ../pantallaProductosAdmin.php");
+    header("Location: ../plantilla/template/pages/forms/pantallaProductosAdmin.php ");
     exit; // Asegurarse de que no se ejecute más código después de redirigir
 }
 ?>

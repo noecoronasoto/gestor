@@ -19,8 +19,8 @@
   <link rel="shortcut icon" href="../../images/favicon.png" />
 
 </head>
-<body>
-<div class="container-scroller">
+<body >
+<div  class="container-scroller">
   <!-- partial:../../partials/_navbar.html -->
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -109,18 +109,18 @@
           </li>
         </ul>
       </nav>
-      <div class="main-panel">
+      <div class="main-panel" >        
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-12 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Alta Productos</h4>
                   <p class="card-description">Información</p>
-                  <form class="forms-sample" action="../../../../backend/registro_producto.php" method="POST">
+                  <form class="forms-sample" action="../../../../backend/registro_producto.php" method="POST"  onsubmit="document.getElementById('ingresar').style.display = 'block'; return false;">
                     <div class="form-group">
                       <label for="productoNuevo">Nombre producto</label>
-                      <input type="text" class="form-control"  name="productoNuevo" placeholder="Nombre">
+                      <input type="text" class="form-control"  name="productoNuevo" placeholder="Nombre" >
                     </div>
                     <div class="form-group">
                       <label for="fechaNueva">Fecha ingreso</label>
@@ -142,8 +142,9 @@
                       <label for="stockminNuevo">Stock Mínimo</label>
                       <input type="number" class="form-control"  name="stockminNuevo" placeholder="Mínimo">
                     </div>
+                    
                     <div class="form-group">
-                      <label for="descripNueva">Descripción</label>
+                    <label for="descripNueva">Descripción</label>
                       <input type="text" class="form-control"  name="descripNueva" placeholder="Descripción">
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -152,8 +153,8 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+
+        
         <!-- content-wrapper ends -->
       </div>
       <!-- main-panel ends -->
