@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="../../images/favicon.png" />
     
-    <title>Productos</title>
+    <title>AGREGAR USUARIOS</title>
     <script src="script2.js" defer></script>
     <script src="script3.js" defer></script> 
 </head>
@@ -44,7 +44,7 @@
                             <i class="typcn typcn-cog text-primary"></i>
                             Settings
                         </a>
-                        <a class="dropdown-item" href="index.php">
+                        <a class="dropdown-item" href="../../../../index.php">
                             <i class="typcn typcn-power text-primary"></i>
                             Logout
                         </a>

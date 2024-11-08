@@ -55,7 +55,7 @@
                 <i class="typcn typcn-cog text-primary"></i>
                 Settings
                 </a>
-                <a class="dropdown-item" href="index.php">
+                <a class="dropdown-item" href="../../index.php">
                 <i class="typcn typcn-power text-primary"></i>
                 Logout
                 </a>

@@ -1,6 +1,14 @@
 <?php
+$servername = "localhost"; // Cambia esto según tu configuración
+$username = "root"; // Cambia esto según tu configuración
+$password = "123456789"; // Cambia esto según tu configuración
+$dbname = "marketmini"; // Cambia esto según tu configuración
 
-    $conn = mysqli_connect("localhost", "root", "12345678","marketmini");
-   
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Comprobar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 ?>

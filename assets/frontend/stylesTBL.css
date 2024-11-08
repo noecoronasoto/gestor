@@ -1,0 +1,42 @@
+  /* Estilos de la tabla responsiva */
+  .table-container {
+    max-height: 400px; /* Limita la altura de la tabla */
+    overflow-y: auto; /* Activa el desplazamiento vertical si es necesario */
+    margin-bottom: 20px; /* Espacio debajo de la tabla */
+}
+
+.table-responsive {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-responsive th, .table-responsive td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 600px) {
+    .table-responsive thead {
+        display: none;
+    }
+    .table-responsive tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .table-responsive td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .table-responsive td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

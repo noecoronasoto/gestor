@@ -1,0 +1,96 @@
+/* Fuentes */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor de inicio de sesión */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Título */
+.login-title {
+    color: #7895;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #285683;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #043261;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #46A2FD;
+    background-color: #ffffff;
+}
+
+/* Botón */
+.login-button {
+    background-color: #285683;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.login-button:hover {
+    background-color: #46A2FD;
+}
+
+.login-button:active {
+    transform: scale(0.98);
+}
+
+/* Mensaje de error */
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+}
+
+/* Para etiquetas */
+label {
+    font-size: 0.95rem;
+    color: #043261;
+    text-align: left;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../images/fondoLogin.jpg); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}

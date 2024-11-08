@@ -1,41 +1,109 @@
-<?php 
+<?php
+include 'conexion_be.php';
 
-    include 'conexion_be.php';
+// Validar datos del formulario
+if (isset($_POST['usuario'], $_POST['contrasena'], $_POST['rol'])) {
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
+    $rol = $_POST['rol'];
 
-    $correoNuev = $_POST['password'];
-    $contrasenaNuev = $_POST['contrasenaNueva'];
-    $contra_encrip = hash('sha512', $contrasenaNuev);
-
-    $query = "INSERT INTO usuarios(nombre, pssswd) VALUES('$correoNuev', 
-    '$contra_encrip')"; 
-
-
-    //validar repeticiones bd
-    $verificarCorreo = mysqli_query($conn, "SELECT * FROM usuarios WHERE nombre");
-
-    if(mysqli_num_rows($verificarCorreo) > 0){
-        echo '
-        <script >
-            alert("usuario ya registrado");
-            window.location = "../index.php";
+    // Verificar que solo contenga letras y números, sin espacios
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $usuario) || !preg_match('/^[a-zA-Z0-9]+$/', $contrasena)) {
+        echo "
+        <div id='message' style='
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f44336;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        '>
+            Usuario y contraseña invalidos.
+        </div>
+        <script>
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    window.location.href = '../plantilla/template/pages/forms/pantallaUsuariosAdmin.php';
+                }
+            });
         </script>
-        ';
-        mysqli_close($conn);
-        exit();
+        ";
+        exit; // Detiene la ejecución si los datos son inválidos
     }
 
-    $ejecutar = mysqli_query($conn, $query);
+    // Encriptar la contraseña
+    $contrasena = password_hash($contrasena, PASSWORD_BCRYPT);
 
-    if($ejecutar){
-        echo '<script>alert("Registro Exitoso");
-        window.location = "../index.php";
-        </script>';
-    }else{
-        echo '<script>alert("Incorrecto");
-        window.location = "../index.php";
-        </script>';
+    // Comprobar si el usuario ya existe
+    $check_stmt = $conn->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario = ?");
+    $check_stmt->bind_param("s", $usuario);
+    $check_stmt->execute();
+    $check_stmt->bind_result($count);
+    $check_stmt->fetch();
+    $check_stmt->close();
+
+    if ($count > 0) {
+        echo "
+        <div id='message' style='
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f44336;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        '>
+            El usuario ya existe. Presiona Enter para salir.
+        </div>
+        <script>
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    window.location.href = '../plantilla/template/pages/forms/pantallaUsuariosAdmin.php';
+                }
+            });
+        </script>
+        ";
+    } else {
+        // Insertar el nuevo usuario en la base de datos
+        $stmt = $conn->prepare("INSERT INTO usuarios (usuario, contrasena, rol) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $usuario, $contrasena, $rol);
+        if ($stmt->execute()) {
+            echo "
+            <div id='message' style='
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #4CAF50;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            '>
+                Usuario agregado exitosamente. Presiona Enter para salir.
+            </div>
+            <script>
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        window.location.href = '../plantilla/template/pages/forms/pantallaUsuariosAdmin.php';
+                    }
+                });
+            </script>
+            ";
+        } else {
+            echo "Error al agregar el usuario: " . $conn->error;
+        }
+        $stmt->close();
     }
 
-    mysqli_close($conn);
-    
+    $conn->close();
+}
 ?>

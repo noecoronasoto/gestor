@@ -1,77 +1,38 @@
-//Ejecutando funciones
-document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
-document.getElementById("btn__registrarse").addEventListener("click", register);
-window.addEventListener("resize", anchoPage);
-document.getElementById("boton").addEventListener("click", register);
-
-//Declarando variables
-var formulario_login = document.querySelector(".formulario__login");
-var formulario_register = document.querySelector(".formulario__register");
-var contenedor_login_register = document.querySelector(".contenedor__login-register");
-var caja_trasera_login = document.querySelector(".caja__trasera-login");
-var caja_trasera_register = document.querySelector(".caja__trasera-register");
-
-    //FUNCIONES
-
-function anchoPage(){
-
-    if (window.innerWidth > 850){
-        caja_trasera_register.style.display = "block";
-        caja_trasera_login.style.display = "block";
-    }else{
-        caja_trasera_register.style.display = "block";
-        caja_trasera_register.style.opacity = "1";
-        caja_trasera_login.style.display = "none";
-        formulario_login.style.display = "block";
-        contenedor_login_register.style.left = "0px";
-        formulario_register.style.display = "none";   
-    }
+// Función para abrir el modal de agregar usuario
+function abrirModal() {
+    const modalAgregar = document.getElementById('modalAgregarUsuario');
+    modalAgregar.style.display = 'flex'; // Muestra el modal como flex para centrarlo
 }
 
-anchoPage();
-
-
-    function iniciarSesion(){
-        if (window.innerWidth > 850){
-            formulario_login.style.display = "block";
-            contenedor_login_register.style.left = "10px";
-            formulario_register.style.display = "none";
-            caja_trasera_register.style.opacity = "1";
-            caja_trasera_login.style.opacity = "0";
-        }else{
-            formulario_login.style.display = "block";
-            contenedor_login_register.style.left = "0px";
-            formulario_register.style.display = "none";
-            caja_trasera_register.style.display = "block";
-            caja_trasera_login.style.display = "none";
-        }
-    }
-
-    function register(){
-        if (window.innerWidth > 850){
-            formulario_register.style.display = "block";
-            contenedor_login_register.style.left = "410px";
-            formulario_login.style.display = "none";
-            caja_trasera_register.style.opacity = "0";
-            caja_trasera_login.style.opacity = "1";
-        }else{
-            formulario_register.style.display = "block";
-            contenedor_login_register.style.left = "0px";
-            formulario_login.style.display = "none";
-            caja_trasera_register.style.display = "none";
-            caja_trasera_login.style.display = "block";
-            caja_trasera_login.style.opacity = "1";
-        }
+// Función para cerrar el modal de agregar usuario
+function cerrarModal() {
+    const modalAgregar = document.getElementById('modalAgregarUsuario');
+    modalAgregar.style.display = 'none'; // Oculta el modal
 }
-function MostrarOpciones() {
-    const opciones = document.getElementById('opciones');
+
+// Función para abrir el modal de eliminar usuario con el ID del usuario
+function abrirModalEliminar(id) {
+    const modalEliminar = document.getElementById('modalEliminarUsuario');
+    modalEliminar.style.display = 'flex'; // Muestra el modal como flex para centrarlo
     
-    // Cambia el estilo de display para mostrar u ocultar las opciones
-    if (opciones.style.display === 'none') {
-        opciones.style.display = 'block'; // Muestra las opciones
-    } else {
-        opciones.style.display = 'none'; // Oculta las opciones
-    }
+    // Establece el ID del usuario en el campo oculto dentro del formulario
+    const idUsuarioEliminar = document.getElementById('idUsuarioEliminar');
+    idUsuarioEliminar.value = id;
 }
 
+// Función para cerrar el modal de eliminar usuario
+function cerrarModalEliminar() {
+    const modalEliminar = document.getElementById('modalEliminarUsuario');
+    modalEliminar.style.display = 'none'; // Oculta el modal
+}
 
+// Cierra los modales cuando se hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    const modalAgregar = document.getElementById('modalAgregarUsuario');
+    const modalEliminar = document.getElementById('modalEliminarUsuario');
+    if (event.target === modalAgregar) {
+        modalAgregar.style.display = 'none';
+    } else if (event.target === modalEliminar) {
+        modalEliminar.style.display = 'none';
+    }
+};
