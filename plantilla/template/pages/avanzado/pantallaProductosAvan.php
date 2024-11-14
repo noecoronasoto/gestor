@@ -114,29 +114,34 @@
           </li>
 
 
-      </nav>
-      <div class="col-lg-12 grid-margin stretch-card">
+      </nav>  <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bordered table</h4>
+                  <h4 class="card-title">Tabla Productos</h4>
                   <p class="card-description">
-                    Add class <code>.table-bordered</code>
+                    Productos
                   </p>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
-                    <thead>
-            <tr>
-                <th>Nombre del Producto</th>
-                <th>Cantidad</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+                      <thead>
+                      <tr>
+                      <th >Nombre del Producto</th>
+                      <th >Unidades</th>
+                      <th >Precio</th>
+                      <th > Stock min</th>
+                      <th >  Stock max      </th>
+                      <th >   Fecha de ingreso     </th>
+                      <th >    Descripcion     </th>
+                      <th >    acciones     </th>
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
             // Incluir el archivo de conexión
-            include 'backend/conexion_be.php';
+            include '../../../../backend/conexion_be.php';
 
-            $sql = "SELECT id, nombre, unidades FROM productos";
+            $sql = "SELECT * FROM productos";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -145,11 +150,18 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['unidades']) . "</td>";
-                    echo "<td>
-                            <button class='BtnBorrar' onclick=\"window.location.href='backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>
-                            <button class='BtnModificar' onclick=\"abrirModalModificar(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "', " . htmlspecialchars($row['unidades']) . ")\">Modificar</button>
-                          </td>"; // Botones de borrar y modificar
-                    echo "</tr>";
+                    echo "<td>" . htmlspecialchars($row['precio_venta']) . "</td>"; 
+                    echo "<td>" . htmlspecialchars($row['stock_minimo']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['stock_max']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['fecha_ingreso']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+                
+                    
+                                echo "<td>";
+                                echo "<button class='btn btn-danger btn-rounded btn-fw' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
+                               
+                                echo "</td>";
+                                echo "</tr>";
                 }
             } else {
                 echo "<tr><td colspan='3'>No hay productos</td></tr>";
@@ -157,10 +169,12 @@
 
             $conn->close();
             ?>
-        </tbody>
-    </table>
-                  </div>
-
+                    </tbody>
+                    </table>
+                    </div>
+                </div>
+              </div>
+            </div>
     
 
   <!-- container-scroller -->

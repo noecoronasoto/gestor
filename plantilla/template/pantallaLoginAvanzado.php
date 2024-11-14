@@ -38,13 +38,6 @@
 
           </ul>
           <ul class="navbar-nav navbar-nav-right">
-            
-              
-             
-    
-
-            
-
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
                 <i class="typcn typcn-user-outline mr-0"></i>
@@ -55,7 +48,7 @@
                 <i class="typcn typcn-cog text-primary"></i>
                 Settings
                 </a>
-                <a class="dropdown-item" href="index.php">
+                <a class="dropdown-item" href="../../../../index.php">
                 <i class="typcn typcn-power text-primary"></i>
                 Logout
                 </a>

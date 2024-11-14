@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +120,7 @@
           </li>
 
       </nav>
-      <div class="col-lg-6 grid-margin stretch-card">
+      <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Tabla Productos</h4>
@@ -168,7 +166,7 @@
                                 echo "<td>";
                                 echo "<button class='btn btn-danger btn-rounded btn-fw ' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
                                         
-                                echo "<button class='btn btn-danger btn-rounded btn-fw ' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\">Modificar</button>";
+                                echo "<button class='btn btn-info btn-rounded btn-fw' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\">Modificar</button>";
 
 
                                 echo "</tr>";

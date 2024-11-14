@@ -18,16 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         // Verifica la contraseña
         if (password_verify($contrasena, $usuario_db['contrasena'])) {
+            // Almacena el ID del usuario en la sesión
+            $_SESSION['id_usuario'] = $usuario_db['id'];
             $_SESSION['usuario'] = $usuario_db['usuario'];
             $_SESSION['rol'] = $usuario_db['rol'];
             
             // Redirige según el rol del usuario
             if ($usuario_db['rol'] === 'Administrador') {
-                header("Location: ../plantilla/template/pantallaLoginAdmin.php");
+                header("Location: ../plantilla/template/pages/forms/altasAdmin.php");
             } elseif ($usuario_db['rol'] === 'Ventas') {
-                header("Location: ../plantilla/template/pantallaLoginAvanzado.php");
-            }elseif ($usuario_db['rol'] === 'Cliente') {
-                header("Location: ../plantilla/template/pantallaLoginBasico.php");
+                header("Location: ../plantilla/template/pages/avanzado/pantallaProductosAvan.php");
+            } elseif ($usuario_db['rol'] === 'Cliente') {
+                header("Location: ../plantilla/template/pages/basico/pantallaProductosBasic.php");
             } else {
                 $error = "Rol no reconocido.";
             }

@@ -1,0 +1,94 @@
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilos de la tabla */
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sales-table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+.sales-table th, .sales-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.sales-table th {
+    font-weight: 600;
+}
+
+.sales-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+.sales-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Alternar color de filas */
+.sales-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Resaltar celdas de totales */
+.sales-table td:nth-child(4) {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Resaltar fila de no registros */
+.sales-table tr.no-records td {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .sales-table, .sales-table thead, .sales-table tbody, .sales-table th, .sales-table td, .sales-table tr {
+        display: block;
+    }
+
+    .sales-table tr {
+        margin-bottom: 15px;
+    }
+
+    .sales-table td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+    }
+
+    .sales-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

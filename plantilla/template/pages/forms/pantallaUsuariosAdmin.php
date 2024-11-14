@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="stylest.css">
+    <link rel="stylesheet" href="../../../../assets/frontend/stylest.css">
     <link rel="stylesheet" href="../../vendors/typicons.font/font/typicons.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
@@ -17,6 +17,8 @@
     <script src="script3.js" defer></script> 
 </head>
 <body>
+
+
 
 <div class="container-scroller">
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -79,6 +81,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+            <a class="nav-link"  href="ventasAdmin.php" >
+              <i class="typcn typcn-briefcase menu-icon"></i>
+              <span class="menu-title">Ventas</span>
+              <i class="typcn typcn-chevron-right menu-arrow"></i>
+            </a>
+          </li>
+                <li class="nav-item">
                     <a class="nav-link" href="pantallaProductosAdmin.php">
                         <i class="typcn typcn-film menu-icon"></i>
                         <span class="menu-title">Productos</span>
@@ -92,6 +101,8 @@
                 </li>
             </ul>
         </nav>
+
+        
         <main class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
