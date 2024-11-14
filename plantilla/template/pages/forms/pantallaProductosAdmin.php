@@ -156,7 +156,7 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['unidades']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['precio_compra']) . "</td>"; 
+                    echo "<td>" . htmlspecialchars($row['precio_venta']) . "</td>"; 
                     echo "<td>" . htmlspecialchars($row['stock_minimo']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['stock_max']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['fecha_ingreso']) . "</td>";
@@ -208,10 +208,7 @@
             <label for="cantidadmax">Stock Máximo</label>
             <input type="number" class="form-control" id="cantidadmax" name="cantidadma">
           </div>
-          <div class="form-group">
-            <label for="precio">Precio</label>
-            <input type="number" class="form-control" id="precio" name="cantidadma">
-          </div>
+    
         </form>
       </div>
       <div class="modal-footer">
