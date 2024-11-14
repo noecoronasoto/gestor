@@ -166,9 +166,11 @@
                 
                     
                                 echo "<td>";
-                                echo "<button class='btn btn-danger btn-rounded btn-fw' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
-                               
-                                echo "</td>";
+                                echo "<button class='btn btn-danger btn-rounded btn-fw ' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
+                                        
+                                echo "<button class='btn btn-danger btn-rounded btn-fw ' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\">Modificar</button>";
+
+
                                 echo "</tr>";
                 }
             } else {
@@ -183,6 +185,45 @@
                 </div>
               </div>
             </div>
+       
+<div class="modal fade" id="modificarProductoModal" tabindex="-1" role="dialog" aria-labelledby="modificarProductoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modificarProductoModalLabel">Modificar Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="modificarProductoForm">
+          <input type="hidden" id="productoId" name="id">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+          </div>
+          <div class="form-group">
+            <label for="cantidadmin">Stock Mínimo</label>
+            <input type="number" class="form-control" id="cantidadmin" name="cantidadmi">
+          </div>
+          <div class="form-group">
+            <label for="cantidadmax">Stock Máximo</label>
+            <input type="number" class="form-control" id="cantidadmax" name="cantidadma">
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="number" class="form-control" id="precio" name="cantidadma">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="submitModificarProductoForm()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                   
 
     
@@ -199,6 +240,7 @@
   <script src="../../js/template.js"></script>
   <script src="../../js/settings.js"></script>
   <script src="../../js/todolist.js"></script>
+  <script src="../../../../script3.js"></script>
   <!-- endinject -->
   <!-- plugin js for this page -->
   <!-- End plugin js for this page -->

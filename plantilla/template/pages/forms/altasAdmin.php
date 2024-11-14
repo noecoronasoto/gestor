@@ -142,7 +142,9 @@
                       <label for="stockminNuevo">Stock Mínimo</label>
                       <input type="number" class="form-control"  name="stockminNuevo" placeholder="Mínimo">
                     </div>
-                    
+                    <div>
+                      <p></p>
+                    </div>
                     <div class="form-group">
                     <label for="descripNueva">Descripción</label>
                       <input type="text" class="form-control"  name="descripNueva" placeholder="Descripción">
@@ -153,6 +155,67 @@
                 </div>
               </div>
             </div>
+                 
+     
+            <?php
+            // Incluir el archivo de conexión
+            include '../../../../backend/conexion_be.php';
+
+            $sql = "SELECT nombre FROM productos";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) 
+?>
+
+<div class="col-md-6 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Modificar Producto Existente</h4>
+      <p class="card-description">Información del producto</p>
+      <form class="forms-sample" action="../../../../backend/registro_productoexist.php" method="POST">
+      <div class="form-group">
+    <label for="productoSeleccionado">Seleccionar Producto</label>
+    <select class="form-control" name="productoSeleccionado">
+        <?php
+        if ($result->num_rows > 0) {
+            // Iterar sobre los resultados y crear una opción para cada producto
+            while($row = $result->fetch_assoc()) {
+                echo '<option value="' . htmlspecialchars($row['nombre']) . '">' . htmlspecialchars($row['nombre']) . '</option>';
+            }
+        } else {
+            // En caso de no haber resultados, mostrar una opción vacía o un mensaje
+            echo '<option value="">No hay productos disponibles</option>';
+        }
+        ?>
+    </select>
+</div>
+
+<?php
+// Cerrar la conexión
+$conn->close();
+?>
+        <div class="form-group">
+          <label for="fechaNueva">Fecha ingreso</label>
+          <input type="date" class="form-control" name="fechaNueva">
+        </div>
+        <div class="form-group">
+          <label for="unidadNueva">Unidades</label>
+          <input type="number" class="form-control" name="unidadNueva" placeholder="Unidades">
+        </div>
+        <div class="form-group">
+          <label for="precioNuevo">Precio Venta</label>
+          <input type="number" class="form-control" name="precioNuevo" placeholder="Precio">
+        </div>
+        <div class="form-group">
+          <label for="descripNueva">Descripción</label>
+          <input type="text" class="form-control" name="descripNueva" placeholder="Descripción">
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+        <button class="btn btn-light">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
 
         
         <!-- content-wrapper ends -->
