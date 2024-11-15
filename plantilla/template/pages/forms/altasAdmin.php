@@ -172,7 +172,7 @@
     <div class="card-body">
       <h4 class="card-title">Modificar Producto Existente</h4>
       <p class="card-description">Información del producto</p>
-      <form class="forms-sample" action="../../../../backend/registro_productoexist.php" method="POST">
+      <form class="forms-sample" action="../../../../backend/modificar_productoexist.php" method="POST">
       <div class="form-group">
     <label for="productoSeleccionado">Seleccionar Producto</label>
     <select class="form-control" name="productoSeleccionado">
@@ -190,6 +190,8 @@
     </select>
 
 </div>
+  
+
 
 <?php
 // Cerrar la conexión

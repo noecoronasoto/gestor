@@ -164,7 +164,7 @@
                 
                     
                                 echo "<td>";
-                                echo "<button class='btn btn-danger btn-rounded btn-fw ' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
+                                echo "<button class='btn btn-danger btn-rounded btn-fw' onclick=\"if(confirm('¿Estás seguro de que deseas borrar este producto?')) { window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'; }\">Borrar</button>";
                                         
                                 echo "<button class='btn btn-info btn-rounded btn-fw' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\">Modificar</button>";
 

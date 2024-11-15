@@ -11,3 +11,5 @@ if (isset($_GET['id'])) {
     exit; // Asegurarse de que no se ejecute más código después de redirigir
 }
 ?>
+
+
