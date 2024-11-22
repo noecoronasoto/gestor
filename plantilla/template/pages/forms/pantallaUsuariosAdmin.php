@@ -23,8 +23,8 @@
 <div class="container-scroller">
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo-mini"/></a>
+            <a class="navbar-brand brand-logo" href="#"><img src="https://static.vecteezy.com/system/resources/previews/012/049/426/non_2x/letter-g-logo-design-initial-g-letter-logo-design-g-logo-icon-design-g-simple-logo-design-free-template-free-vector.jpg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo-mini"/></a>
             <button class="navbar-toggler navbar-toggler align-self-center d-none d-lg-flex" type="button" data-toggle="minimize">
                 <span class="typcn typcn-th-menu"></span>
             </button>
@@ -32,7 +32,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
                 <li class="nav-item d-none d-lg-flex">
-                    <a class="nav-link" href="/plantilla/template/pantallaLoginAdmin.php">INICIO</a>
+                    <a class="nav-link" href="#">INICIO</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -64,12 +64,12 @@
                 <li class="nav-item">
                     <div class="d-flex sidebar-profile">
                         <div class="sidebar-profile-image">
-                            <img src="images/faces/face29.png" alt="image">
+                            <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="image">
                             <span class="sidebar-status-indicator"></span>
                         </div>
                         <div class="sidebar-profile-name">
                             <p class="sidebar-name">ADMINISTRADOR</p>
-                            <p class="sidebar-designation">Pantalla Inicio</p>
+                            <p class="sidebar-designation">Pantalla Usuarios</p>
                         </div>
                     </div>
                     <p class="sidebar-menu-title">Opciones</p>

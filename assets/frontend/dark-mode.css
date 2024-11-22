@@ -1,0 +1,22 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .dark-mode .navbar, 
+  .dark-mode .sidebar,
+  .dark-mode .card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  
+  .dark-mode .form-control {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  .dark-mode .btn-primary {
+    background-color: #3e3e3e;
+    border-color: #3e3e3e;
+  }
+  

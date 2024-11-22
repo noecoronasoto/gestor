@@ -23,8 +23,8 @@
 <div class="container-scroller">
   <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      <a class="navbar-brand brand-logo" href="#"><img src="https://static.vecteezy.com/system/resources/previews/012/049/426/non_2x/letter-g-logo-design-initial-g-letter-logo-design-g-logo-icon-design-g-simple-logo-design-free-template-free-vector.jpg" alt="logo"/></a>
+      <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo"/></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       <ul class="navbar-nav mr-lg-2">
@@ -52,7 +52,7 @@
       </ul>
     </div>
   </nav>
-  
+
   <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
@@ -130,8 +130,8 @@
               echo "<tr>";
               echo "<td>" . htmlspecialchars($row['producto']) . "</td>";
               echo "<td>" . htmlspecialchars($row['cantidad']) . "</td>";
-              echo "<td>" . htmlspecialchars($row['precio_unitario']) . "</td>";
-              echo "<td>" . htmlspecialchars($row['total']) . "</td>";
+              echo "<td>$" . htmlspecialchars($row['precio_unitario']) . "</td>";
+              echo "<td>$" . htmlspecialchars($row['total']) . "</td>";
               echo "<td>" . htmlspecialchars($row['fecha_venta']) . "</td>";
               echo "<td>" . htmlspecialchars($row['vendedor']) . "</td>";
               echo "</tr>";

@@ -15,6 +15,9 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+
+  <link rel="stylesheet" href="../../../../assets/frontend/dark-mode.css"> <!-- Agrega tu archivo CSS para el modo oscuro -->
+
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
 
@@ -26,8 +29,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="logito.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="#"><img src="https://static.vecteezy.com/system/resources/previews/012/049/426/non_2x/letter-g-logo-design-initial-g-letter-logo-design-g-logo-icon-design-g-simple-logo-design-free-template-free-vector.jpg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo"/></a>
         <button class="navbar-toggler navbar-toggler align-self-center d-none d-lg-flex" type="button" data-toggle="minimize">
           <span class="typcn typcn-th-menu"></span>
         </button>
@@ -45,10 +48,12 @@
               <span class="nav-profile-name">ADMINISTRADOR</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="typcn typcn-cog text-primary"></i>
-                Settings
-              </a>
+            <a class="dropdown-item" id="darkModeToggle">
+  <i class="typcn typcn-cog text-primary" id="darkModeIcon"></i>
+  <span id="darkModeText">Modo Oscuro</span>
+</a>
+
+
               <a class="dropdown-item" href="../../../../index.php">
                 <i class="typcn typcn-power text-primary"></i>
                 Logout
@@ -71,12 +76,12 @@
           <li class="nav-item">
             <div class="d-flex sidebar-profile">
               <div class="sidebar-profile-image">
-                <img src="images/faces/face29.png" alt="image">
+                <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="image">
                 <span class="sidebar-status-indicator"></span>
               </div>
               <div class="sidebar-profile-name">
                 <p class="sidebar-name">ADMINISTRADOR</p>
-                <p class="sidebar-designation">Pantalla Inicio</p>
+                <p class="sidebar-designation">Pantalla Altas</p>
               </div>
             </div>
             <p class="sidebar-menu-title">Opciones</p>
@@ -247,6 +252,41 @@ $conn->close();
   <script src="../../js/typeahead.js"></script>
   <script src="../../js/select2.js"></script>
   <!-- End custom js for this page-->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleMenuItem = document.getElementById("darkModeToggle");
+    const darkModeText = document.getElementById("darkModeText");
+    const darkModeIcon = document.getElementById("darkModeIcon");
+    const body = document.body;
+
+    // Función para aplicar el modo oscuro
+    function applyDarkMode(isDarkMode) {
+      if (isDarkMode) {
+        body.classList.add("dark-mode");
+        darkModeText.textContent = "Modo Claro";
+        darkModeIcon.classList.remove("typcn-cog");
+        darkModeIcon.classList.add("typcn-lightbulb");
+      } else {
+        body.classList.remove("dark-mode");
+        darkModeText.textContent = "Modo Oscuro";
+        darkModeIcon.classList.remove("typcn-lightbulb");
+        darkModeIcon.classList.add("typcn-cog");
+      }
+    }
+
+    // Verificar el estado guardado en localStorage
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    applyDarkMode(isDarkMode);
+
+    // Escuchar el evento de clic en el conmutador de modo
+    toggleMenuItem.addEventListener("click", function() {
+      const isDarkMode = body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", isDarkMode);
+      applyDarkMode(isDarkMode);
+    });
+  });
+</script>
 
 
 
