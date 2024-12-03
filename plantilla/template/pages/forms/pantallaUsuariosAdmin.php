@@ -127,7 +127,11 @@
                                 echo '<td>' . htmlspecialchars($row['id']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['usuario']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['rol']) . '</td>';
-                                echo '<td><button class=btn btn-primary mr-2 onclick="abrirModalEliminar(' . $row['id'] . ')">Eliminar</button></td>';
+echo '<td>
+    <button class="btn btn-danger btn-sm d-flex align-items-center" onclick="abrirModalEliminar(' . $row['id'] . ')" title="Eliminar este registro">
+        <i class="fas fa-trash-alt mr-2"></i> Eliminar
+    </button>
+</td>';
                                 echo '</tr>';
                             }
                             echo '</tbody></table>';

@@ -78,31 +78,31 @@
                     <p class="sidebar-menu-title">Opciones</p>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="altasAdmin.php">
-                        <i class="typcn typcn-device-desktop menu-icon"></i>
-                        <span class="menu-title">Altas</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="ventasAdmin.php" aria-expanded="false" aria-controls="ui-basic">
-                        <i class="typcn typcn-briefcase menu-icon"></i>
-                        <span class="menu-title">Ventas</span>
-                        <i class="typcn typcn-chevron-right menu-arrow"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pantallaProductosAdmin.php">
-                        <i class="typcn typcn-film menu-icon"></i>
-                        <span class="menu-title">Productos</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pantallaUsuariosAdmin.php">
-                        <i class="typcn typcn-device-desktop menu-icon"></i>
-                        <span class="menu-title">Usuarios</span>
-                    </a>
-                </li>
+            <a class="nav-link" href="altasAdmin.php">
+              <i class="typcn typcn-device-desktop menu-icon"></i>
+              <span class="menu-title">Altas</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="ventasAdmin.php" >
+              <i class="typcn typcn-briefcase menu-icon"></i>
+              <span class="menu-title">Ventas</span>
+              <i class="typcn typcn-chevron-right menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pantallaProductosAdmin.php">
+              <i class="typcn typcn-film menu-icon"></i>
+              <span class="menu-title">Productos</span>
+    
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pantallaUsuariosAdmin.php">
+              <i class="typcn typcn-device-desktop menu-icon"></i>
+              <span class="menu-title">Usuarios</span>
+            </a>
+          </li>
             </ul>
         </nav>
         <div class="main-panel">
@@ -116,7 +116,7 @@
                         Productos
                     </p>
                     <div class="table-responsive pt-3">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="text-align: center;">
                             <thead>
                             <tr>
                                 <th>Nombre del Producto</th>
@@ -177,7 +177,7 @@ if ($result->num_rows > 0) {
         </td>";
         echo "<td>";
         echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"if(confirm('¿Estás seguro de que deseas borrar este producto?')) { window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'; }\"><i class='typcn typcn-info-outline'></i></button>";
-        echo "<button class='btn btn-outline-secondary btn-rounded btn-icon' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\"><i class='typcn typcn-edit  text-primary'></i></button>";
+        echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\"><i class='typcn typcn-edit  text-primary'></i></button>";
         echo "</td>";
         echo "</tr>";
     }

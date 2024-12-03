@@ -109,6 +109,7 @@
 </li>
 
 
+
           <li class="nav-item">
             <a class="nav-link" href="pantallaProductosAdmin.php">
               <i class="typcn typcn-film menu-icon"></i>
@@ -123,7 +124,8 @@
             </a>
           </li>
         </ul>
-      </nav> <div class="container">
+      </nav>
+       <div class="container">
     <h1>Lista de Productos</h1>
     <table class="product-table">
         <thead>

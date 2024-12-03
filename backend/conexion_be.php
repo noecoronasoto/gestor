@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost"; // Cambia esto según tu configuración
 $username = "root"; // Cambia esto según tu configuración
-$password = "12345678"; // Cambia esto según tu configuración
+$password = "123456789"; // Cambia esto según tu configuración
 $dbname = "marketmini"; // Cambia esto según tu configuración
 
 // Crear conexión

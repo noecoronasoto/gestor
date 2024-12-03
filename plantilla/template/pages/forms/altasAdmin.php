@@ -162,7 +162,6 @@
               </div>
             </div>
                  
-     
             <?php
             // Incluir el archivo de conexión
             include '../../../../backend/conexion_be.php';
