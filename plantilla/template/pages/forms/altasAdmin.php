@@ -48,10 +48,6 @@
               <span class="nav-profile-name">ADMINISTRADOR</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" id="darkModeToggle">
-  <i class="typcn typcn-cog text-primary" id="darkModeIcon"></i>
-  <span id="darkModeText">Modo Oscuro</span>
-</a>
 
 
               <a class="dropdown-item" href="../../../../index.php">
@@ -103,7 +99,7 @@
             <a class="nav-link" href="pantallaProductosAdmin.php">
               <i class="typcn typcn-film menu-icon"></i>
               <span class="menu-title">Productos</span>
-              <i class="menu-arrow"></i>
+              
             </a>
           </li>
           <li class="nav-item">
@@ -124,10 +120,11 @@
                   <h4 class="card-title">Alta Productos</h4>
                   <p class="card-description">Información</p>
                   <form class="forms-sample" action="../../../../backend/registro_producto.php" method="POST"  onsubmit="document.getElementById('ingresar').style.display = 'block'; return false;">
-                    <div class="form-group">
-                      <label for="productoNuevo">Nombre producto</label>
-                      <input type="text" class="form-control"  name="productoNuevo" placeholder="Nombre" >
-                    </div>
+                  <div class="form-group">
+  <label for="productoNuevo">Nombre producto</label>
+  <input type="text" class="form-control" id="productoNuevo" name="productoNuevo" placeholder="Nombre" oninput="this.value = this.value.replace(/ /g, '')">
+</div>
+
                     <div class="form-group">
                       <label for="fechaNueva">Fecha ingreso</label>
                       <input type="date" class="form-control"  name="fechaNueva">

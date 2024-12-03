@@ -29,7 +29,7 @@
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       <ul class="navbar-nav mr-lg-2">
         <li class="nav-item d-none d-lg-flex">
-          <a class="nav-link" href="/plantilla/template/pantallaLoginAdmin.php">INICIO</a>
+          <a class="nav-link" href="">INICIO</a>
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav-right">
@@ -86,9 +86,7 @@
           <a class="nav-link" href="pantallaProductosAdmin.php">
               <i class="typcn typcn-film menu-icon"></i>
               <span class="menu-title">Productos</span>
-              <i class="menu-arrow"></i>
             </a>
-            
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pantallaUsuariosAdmin.php">
@@ -96,88 +94,99 @@
               <span class="menu-title">Usuarios </span>
             </a>
           </li>
-
       </ul>
     </nav>
-    
-    <div class="container">
-  <h1>Registro de Ventas</h1>
-  <form id="salesFilterForm" method="GET">
-    <label for="month">Seleccionar mes:</label>
-    <select id="month" name="month">
-      <option value="01">Enero</option>
-      <option value="02">Febrero</option>
-      <option value="03">Marzo</option>
-      <option value="04">Abril</option>
-      <option value="05">Mayo</option>
-      <option value="06">Junio</option>
-      <option value="07">Julio</option>
-      <option value="08">Agosto</option>
-      <option value="09">Septiembre</option>
-      <option value="10">Octubre</option>
-      <option value="11">Noviembre</option>
-      <option value="12">Diciembre</option>
-    </select>
-    <button type="submit" class="btn btn-light">Filtrar</button>
-  </form>
 
-  <button id="generatePdf" class="btn btn-light">Generar PDF</button>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h1>Registro de Ventas</h1>
+                <form id="salesFilterForm" method="GET">
+                  <label for="month">Seleccionar mes:</label>
+                  <select id="month" name="month">
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary mr-2">Filtrar</button>
+                </form>
+                <button type="submit" id="generatePdf" class="btn btn-primary mr-2">Generar PDF</button>
+                <div class="table-responsive pt-3">
+                  <table class="table table-bordered" style="text-align: center;">
+                    <thead>
+                      <tr>
+                        <th>Producto</th>
+                        <th>Cantidad Vendida</th>
+                        <th>Precio Unitario</th>
+                        <th>Total Venta</th>
+                        <th>Fecha de Venta</th>
+                        <th>Vendedor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        include '../../../../backend/conexion_be.php';
 
-  <table class="sales-table">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Cantidad Vendida</th>
-        <th>Precio Unitario</th>
-        <th>Total Venta</th>
-        <th>Fecha de Venta</th>
-        <th>Vendedor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-        include '../../../../backend/conexion_be.php';
+                        $month = $_GET['month'] ?? date('m');
+                        $sql = "SELECT v.*, p.nombre AS producto, u.usuario AS vendedor
+                                FROM ventas v
+                                JOIN productos p ON v.id_producto = p.id
+                                LEFT JOIN usuarios u ON v.id_usuario = u.id
+                                WHERE MONTH(v.fecha_venta) = '$month'
+                                ORDER BY v.fecha_venta DESC";
+                        $result = $conn->query($sql);
 
-        $month = $_GET['month'] ?? date('m');
-        $sql = "SELECT v.*, p.nombre AS producto, u.usuario AS vendedor
-                FROM ventas v
-                JOIN productos p ON v.id_producto = p.id
-                LEFT JOIN usuarios u ON v.id_usuario = u.id
-                WHERE MONTH(v.fecha_venta) = '$month'
-                ORDER BY v.fecha_venta DESC";
-        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['producto']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['cantidad']) . "</td>";
+                            echo "<td>$" . htmlspecialchars($row['precio_unitario']) . "</td>";
+                            echo "<td>$" . htmlspecialchars($row['total']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['fecha_venta']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['vendedor']) . "</td>";
+                            echo "</tr>";
+                          }
+                        } else {
+                          echo "<tr><td colspan='6'>No hay registros de ventas.</td></tr>";
+                        }
+                        $conn->close();
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
 
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row['producto']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['cantidad']) . "</td>";
-            echo "<td>$" . htmlspecialchars($row['precio_unitario']) . "</td>";
-            echo "<td>$" . htmlspecialchars($row['total']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['fecha_venta']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['vendedor']) . "</td>";
-            echo "</tr>";
-          }
-        } else {
-          echo "<tr><td colspan='6'>No hay registros de ventas.</td></tr>";
-        }
-        $conn->close();
-      ?>
-    </tbody>
-  </table>
+                <script>
+                  document.getElementById('generatePdf').addEventListener('click', function() {
+                    const month = document.getElementById('month').value;
+                    window.location.href = `../../../../backend/generate_pdf.php?month=${month}`;
+                  });
+                </script>
+                
+                <!-- Scripts -->
+                <script src="../../vendors/js/vendor.bundle.base.js"></script>
+                <script src="../../js/off-canvas.js"></script>
+                <script src="../../js/template.js"></script>
+                <script src="../../js/settings.js"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<script>
-  document.getElementById('generatePdf').addEventListener('click', function() {
-    const month = document.getElementById('month').value;
-    window.location.href = `../../../../backend/generate_pdf.php?month=${month}`;
-  });
-</script>
-
-<!-- Scripts -->
-<script src="../../vendors/js/vendor.bundle.base.js"></script>
-<script src="../../js/off-canvas.js"></script>
-<script src="../../js/template.js"></script>
-<script src="../../js/settings.js"></script>
 </body>
 </html>

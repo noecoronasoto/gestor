@@ -31,7 +31,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
                 <li class="nav-item d-none d-lg-flex">
-                    <a class="nav-link" href="/plantilla/template/pantallaLoginAdmin.php">INICIO</a>
+                    <a class="nav-link" href="">INICIO</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -41,10 +41,7 @@
                         <span class="nav-profile-name">ADMINISTRADOR</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" id="darkModeToggle">
-    <i class="typcn typcn-cog text-primary" id="darkModeIcon"></i>
-    <span id="darkModeText">Modo Oscuro</span>
-  </a>
+                    
                         <a class="dropdown-item" href="../../../../index.php">
                             <i class="typcn typcn-power text-primary"></i>
                             Logout
@@ -105,98 +102,121 @@
           </li>
             </ul>
         </nav>
+        <style>
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 30px;
+        }
+        .progress-percentage {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: black;
+            font-weight: bold;
+        }
+        .progress {
+            height: 100%;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+        }
+    </style>
         <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                    <h4 class="card-title">Tabla Productos</h4>
-                    <p class="card-description">
-                        Productos
-                    </p>
-                    <div class="table-responsive pt-3">
-                        <table class="table table-bordered" style="text-align: center;">
-                            <thead>
-                            <tr>
-                                <th>Nombre del Producto</th>
-                                <th>Unidades</th>
-                                <th>Precio</th>
-                                <th>Stock min</th>
-                                <th>Stock max</th>
-                                <th>Fecha de ingreso</th>
-                                <th>Descripción</th>
-                                <th>Estado del Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-// Incluir el archivo de conexión
-include '../../../../backend/conexion_be.php';
+        <div class="content-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tabla Productos</h4>
+                            <p class="card-description">Productos</p>
+                            <div class="table-responsive pt-3">
+                                <table class="table table-bordered" style="text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Producto</th>
+                                            <th>Unidades</th>
+                                            <th>Precio</th>
+                                            <th>Stock min</th>
+                                            <th>Stock max</th>
+                                            <th>Fecha de ingreso</th>
+                                            <th>Descripción</th>
+                                            <th>Estado del Stock</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // Incluir el archivo de conexión
+                                        include '../../../../backend/conexion_be.php';
 
-$sql = "SELECT * FROM productos";
-$result = $conn->query($sql);
+                                        $sql = "SELECT * FROM productos";
+                                        $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // Salida de datos de cada fila
-    while ($row = $result->fetch_assoc()) {
-        // Calcular el porcentaje del stock
-        $stock_min = $row['stock_minimo'];
-        $stock_max = $row['stock_max'];
-        $unidades = $row['unidades'];
-        $porcentaje = 0;
-        if ($stock_max > $stock_min) {
-            $porcentaje = (($unidades - $stock_min) / ($stock_max - $stock_min)) * 100;
-        }
+                                        if ($result->num_rows > 0) {
+                                            // Salida de datos de cada fila
+                                            while ($row = $result->fetch_assoc()) {
+                                                // Calcular el porcentaje del stock
+                                                $stock_min = $row['stock_minimo'];
+                                                $stock_max = $row['stock_max'];
+                                                $unidades = $row['unidades'];
+                                                $porcentaje = 0;
+                                                if ($stock_max > $stock_min) {
+                                                    $porcentaje = (($unidades - $stock_min) / ($stock_max - $stock_min)) * 100;
+                                                }
 
-        // Redondear el porcentaje a un decimal
-        $porcentaje = round($porcentaje, 1);
+                                                // Redondear el porcentaje a un decimal
+                                                $porcentaje = round($porcentaje, 1);
 
-        // Determinar el color de la barra
-        $color = 'bg-danger'; // rojo
-        if ($porcentaje > 50) {
-            $color = 'bg-success'; // verde
-        } elseif ($porcentaje > 25) {
-            $color = 'bg-warning'; // amarillo
-        }
+                                                // Determinar el color de la barra
+                                                $color = 'bg-danger'; // rojo
+                                                if ($porcentaje > 50) {
+                                                    $color = 'bg-success'; // verde
+                                                } elseif ($porcentaje > 25) {
+                                                    $color = 'bg-warning'; // amarillo
+                                                }
 
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['unidades']) . "</td>";
-        echo "<td>$" . htmlspecialchars($row['precio_venta']) . "</td>";
+                                                echo "<tr>";
+                                                echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+                                                echo "<td>" . htmlspecialchars($row['unidades']) . "</td>";
+                                                echo "<td>$" . htmlspecialchars($row['precio_venta']) . "</td>";
+                                                echo "<td>" . htmlspecialchars($row['stock_minimo']) . "</td>";
+                                                echo "<td>" . htmlspecialchars($row['stock_max']) . "</td>";
+                                                echo "<td>" . htmlspecialchars($row['fecha_ingreso']) . "</td>";
+                                                echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+                                                echo "<td>
+                                                    <div class='progress-container'>
+                                                        <div class='progress'>
+                                                            <div class='progress-bar $color' role='progressbar' style='width: $porcentaje%' aria-valuenow='$porcentaje' aria-valuemin='0' aria-valuemax='100'></div>
+                                                        </div>
+                                                        <div class='progress-percentage'>$porcentaje%</div>
+                                                    </div>
+                                                </td>";
+                                                echo "<td>";
+                                                echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"if(confirm('¿Estás seguro de que deseas borrar este producto?')) { window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'; }\"><i class='typcn typcn-info-outline'></i></button>";
+                                                echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\"><i class='typcn typcn-edit text-primary'></i></button>";
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='9'>No hay productos disponibles</td></tr>";
+                                        }
 
-        echo "<td>" . htmlspecialchars($row['stock_minimo']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['stock_max']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['fecha_ingreso']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
-        echo "<td>
-            <div class='progress'>
-                <div class='progress-bar $color' role='progressbar' style='width: $porcentaje%' aria-valuenow='$porcentaje' aria-valuemin='0' aria-valuemax='100'>$porcentaje%</div>
-            </div>
-        </td>";
-        echo "<td>";
-        echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"if(confirm('¿Estás seguro de que deseas borrar este producto?')) { window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'; }\"><i class='typcn typcn-info-outline'></i></button>";
-        echo "<button class='btn btn-inverse-danger btn-icon' onclick=\"modificarProducto(" . htmlspecialchars($row['id']) . ", '" . htmlspecialchars($row['nombre']) . "'," . htmlspecialchars($row['stock_minimo']) . ", " . htmlspecialchars($row['stock_max']) . ", " . htmlspecialchars($row['precio_venta']) . ")\"><i class='typcn typcn-edit  text-primary'></i></button>";
-        echo "</td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='9'>No hay productos disponibles</td></tr>";
-}
-
-$conn->close();
-?>
-
-                            </tbody>
-                        </table>
+                                        $conn->close();
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 <div class="modal fade" id="modificarProductoModal" tabindex="-1" role="dialog" aria-labelledby="modificarProductoModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

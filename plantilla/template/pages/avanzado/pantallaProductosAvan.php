@@ -38,7 +38,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
           <ul class="navbar-nav mr-lg-2">
             <li class="nav-item  d-none d-lg-flex">
-            <a class="nav-link" href="/plantilla/template/pantallaLoginAvanzado.php">INICIO</a>
+            <a class="nav-link" href="">INICIO</a>
             </li>
 
           </ul>
@@ -53,7 +53,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
                 <i class="typcn typcn-user-outline mr-0"></i>
-                <span class="nav-profile-name">ADMINISTRADOR</span>
+                <span class="nav-profile-name">VENTAS</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">
@@ -88,7 +88,7 @@
               </div>
               <div class="sidebar-profile-name">
                 <p class="sidebar-name">
-                  ADMINISTRADOR
+                  VENTAS
                 </p>
                 <p class="sidebar-designation">
                   Pantalla Incio
@@ -114,15 +114,17 @@
           </li>
 
 
-      </nav>  <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Tabla Productos</h4>
-                  <p class="card-description">
-                    Productos
-                  </p>
-                  <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+      </nav>  
+      <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tabla Productos</h4>
+                            <p class="card-description">Productos</p>
+                            <div class="table-responsive pt-3">
+                                <table class="table table-bordered" style="text-align: center;">
                       <thead>
                       <tr>
                       <th >Nombre del Producto</th>
@@ -132,7 +134,7 @@
                       <th >  Stock max      </th>
                       <th >   Fecha de ingreso     </th>
                       <th >    Descripcion     </th>
-                      <th >    acciones     </th>
+                      
                       
                       </tr>
                     </thead>
@@ -157,10 +159,7 @@
                     echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
                 
                     
-                                echo "<td>";
-                                echo "<button class='btn btn-danger btn-rounded btn-fw' onclick=\"window.location.href='../../../../backend/eliminar_producto.php?id=" . htmlspecialchars($row['id']) . "'\">Borrar</button>";
-                               
-                                echo "</td>";
+           
                                 echo "</tr>";
                 }
             } else {

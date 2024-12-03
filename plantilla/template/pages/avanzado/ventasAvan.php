@@ -36,12 +36,12 @@
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <ul class="navbar-nav mr-lg-2">
           <li class="nav-item d-none d-lg-flex">
-          <a class="nav-link" href="/plantilla/template/pantallaLoginAvanzado.php">INICIO</a>
+          <a class="nav-link" href="">INICIO</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
+            <a class="nav-link dropdown-toggle pl-0 pr-0" href="" data-toggle="dropdown" id="profileDropdown">
               <i class="typcn typcn-user-outline mr-0"></i>
               <span class="nav-profile-name">VENTAS</span>
             </a>
@@ -98,9 +98,16 @@
           </li>
         </ul>
       </nav>
-      <div class="container">
-    <h1>Lista de Productos</h1>
-    <table class="product-table">
+      <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Ventas</h4>
+                            <p class="card-description">Productos</p>
+                            <div class="table-responsive pt-3">
+                                <table class="table table-bordered" style="text-align: center;">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -132,7 +139,8 @@
                     echo "<form action='../../../../backend/vender_producto.php' method='POST'>";
                     echo "<input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>";
                     echo "<input type='number' name='cantidad' min='1' max='" . htmlspecialchars($row['unidades']) . "' placeholder='Cantidad' required>";
-                    echo "<button type='submit' class='btn btn-sell'>Vender</button>";
+                    echo "<p></p>";
+                    echo "<button type='submit' class='btn btn-primary mr-2'>Vender</button>";
                     echo "</form>";
                     echo "</td>";
                     echo "</tr>";

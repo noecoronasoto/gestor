@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 require('../assets/fpdf186/fpdf.php');
 include 'conexion_be.php';
 
+// Obtener el mes seleccionado o el mes actual por defecto
 $month = $_GET['month'] ?? date('m');
 
 // Consulta para obtener los datos del mes seleccionado
@@ -15,6 +16,11 @@ $sql = "SELECT v.*, p.nombre AS producto, u.usuario AS vendedor
         WHERE MONTH(v.fecha_venta) = '$month'
         ORDER BY v.fecha_venta DESC";
 $result = $conn->query($sql);
+
+// Verificar si la consulta devuelve resultados
+if (!$result) {
+    die("Error en la consulta SQL: " . $conn->error);
+}
 
 // Crear el PDF
 $pdf = new FPDF('P', 'mm', 'A4');

@@ -32,7 +32,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav mr-lg-2">
                 <li class="nav-item d-none d-lg-flex">
-                    <a class="nav-link" href="#">INICIO</a>
+                    <a class="nav-link" href="">INICIO</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/pantallaUsuariosAdmin.php">
+                    <a class="nav-link" >
                         <i class="typcn typcn-device-desktop menu-icon"></i>
                         <span class="menu-title">Usuarios</span>
                     </a>
@@ -103,15 +103,22 @@
         </nav>
 
         
-        <main class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Usuarios Registrados</h4>
-                    <div class="table-responsive">
+        <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                    <h4 class="card-title">Usuarios</h4>
+                    <p class="card-description">
+                        Usuarios registrados
+                    </p>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered" style="text-align: center;">
                         <?php
                         include '../../../../backend/conexion_be.php';
 
-                        $sql = "SELECT id, usuario, rol FROM usuarios WHERE id != 1";
+                        $sql = "SELECT id, usuario, rol FROM usuarios WHERE id != 4";
                         $result = $conn->query($sql);
 
                         if (!$result) {
@@ -127,11 +134,11 @@
                                 echo '<td>' . htmlspecialchars($row['id']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['usuario']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['rol']) . '</td>';
-echo '<td>
-    <button class="btn btn-danger btn-sm d-flex align-items-center" onclick="abrirModalEliminar(' . $row['id'] . ')" title="Eliminar este registro">
-        <i class="fas fa-trash-alt mr-2"></i> Eliminar
-    </button>
-</td>';
+                                echo '<td>
+                                    <button class="btn btn-danger btn-sm d-flex align-items-center" onclick="abrirModalEliminar(' . $row['id'] . ')" title="Eliminar este registro">
+                                    <i class="fas fa-trash-alt mr-2"></i> Eliminar
+                                    </button>
+                                    </td>';
                                 echo '</tr>';
                             }
                             echo '</tbody></table>';
